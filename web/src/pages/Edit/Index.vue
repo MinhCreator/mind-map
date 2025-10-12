@@ -210,7 +210,7 @@ body {
       color: #999;
     }
 
-    /* 富文本编辑器 */
+    /*Rich text editor */
     .toastui-editor-main-container {
       background-color: #fff;
     }

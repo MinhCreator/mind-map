@@ -14,7 +14,7 @@
 <script>
 import { mapState } from 'vuex'
 
-// 字数及节点数量统计
+// Word count and node count statistics
 let countEl = document.createElement('div')
 export default {
   props: {
@@ -44,7 +44,7 @@ export default {
     this.$bus.$off('data_change', this.onDataChange)
   },
   methods: {
-    // 监听数据变化
+    // Monitor data changes
     onDataChange(data) {
       this.textStr = ''
       this.words = 0
@@ -54,7 +54,7 @@ export default {
       this.words = countEl.textContent.length
     },
 
-    // 遍历
+    // Traverse
     walk(data) {
       if (!data) return
       this.num++

@@ -9,7 +9,7 @@ class Ai {
   }
 
   init(type = 'huoshan', options = {}) {
-    // 火山引擎接口
+    // Volcano engine interface
     if (type === 'huoshan') {
       this.baseData = {
         api: options.api,
@@ -34,11 +34,11 @@ class Ai {
         if (done) {
           return
         }
-        // 拿到当前切片的数据
+        // Get the data of the current slice
         const text = decoder.decode(value)
         // 处理切片数据
         let chunk = this.handleChunkData(text)
-        // 判断是否有不完整切片，如果有，合并下一次处理，没有则获取数据
+        // Determine whether there are incomplete slices. If so, merge them for next processing. If not, obtain the data.
         if (this.currentChunk) continue
         let isEnd = false
         const list = chunk
@@ -64,7 +64,7 @@ class Ai {
       }
     } catch (error) {
       console.log(error)
-      // 手动停止请求不需要触发错误回调
+      // Manually stopping the request does not require triggering an error callback
       if (!(error && error.name === 'AbortError')) {
         err(error)
       }
@@ -95,16 +95,16 @@ class Ai {
 
   handleChunkData(chunk) {
     chunk = chunk.trim()
-    // 如果存在上一个切片
+    // If there is a previous slice
     if (this.currentChunk) {
       chunk = this.currentChunk + chunk
       this.currentChunk = ''
     }
-    // 如果存在done,认为是完整切片且是最后一个切片
+    // If done exists, it is considered a complete slice and the last slice.
     if (chunk.includes('[DONE]')) {
       return chunk
     }
-    // 最后一个字符串不为}，则默认切片不完整，保存与下次拼接使用（这种方法不严谨，但已经能解决大部分场景的问题）
+    // If the last string is not }, the slice will be incomplete by default and will be saved and used for next splicing (this method is not rigorous, but it can already solve the problems in most scenarios)
     if (chunk[chunk.length - 1] !== '}') {
       this.currentChunk = chunk
     }

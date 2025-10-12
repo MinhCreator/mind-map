@@ -1,3 +1,3 @@
-# 一个web思维导图的简单实现
+# A simple implementation of a web mind map
 
-详细文档见：[https://github.com/wanglin2/mind-map](https://github.com/wanglin2/mind-map)
+For detailed documentation, see：[https://github.com/MinhCreator/mind-map](https://github.com/MinhCreator/mind-map)

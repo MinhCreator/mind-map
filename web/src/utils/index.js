@@ -13,7 +13,7 @@ const getOnfullscreEnevt = () => {
 
 export const fullscrrenEvent = getOnfullscreEnevt()
 
-// 全屏
+// full screen
 export const fullScreen = element => {
   if (element.requestFullScreen) {
     element.requestFullScreen()
@@ -24,7 +24,7 @@ export const fullScreen = element => {
   }
 }
 
-// 文件转buffer
+// File to buffer
 export const fileToBuffer = file => {
   return new Promise(r => {
     const reader = new FileReader()
@@ -35,9 +35,9 @@ export const fileToBuffer = file => {
   })
 }
 
-// 复制文本到剪贴板
+// Copy text to clipboard
 export const copy = text => {
-  // 使用textarea可以保留换行
+  //Use textarea to preserve line breaks
   const input = document.createElement('textarea')
   // input.setAttribute('value', text)
   input.innerHTML = text
@@ -47,14 +47,14 @@ export const copy = text => {
   document.body.removeChild(input)
 }
 
-// 复制文本到剪贴板
+// Copy text to clipboard
 export const setDataToClipboard = data => {
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(data)
   }
 }
 
-// 复制图片到剪贴板
+// Copy image to clipboard
 export const setImgToClipboard = img => {
   if (navigator.clipboard && navigator.clipboard.write) {
     const data = [new ClipboardItem({ ['image/png']: img })]
@@ -62,21 +62,21 @@ export const setImgToClipboard = img => {
   }
 }
 
-// 打印大纲
+// Print outline
 export const printOutline = el => {
   const printContent = el.outerHTML
   const iframe = document.createElement('iframe')
   iframe.setAttribute('style', 'position: absolute; width: 0; height: 0;')
   document.body.appendChild(iframe)
   const iframeDoc = iframe.contentWindow.document
-  // 将当前页面的所有样式添加到iframe中
+  // Add all styles of the current page to the iframe
   const styleList = document.querySelectorAll('style')
   Array.from(styleList).forEach(el => {
     iframeDoc.write(el.outerHTML)
   })
-  // 设置打印展示方式 - 纵向展示
+  // Set print display mode - vertical display
   iframeDoc.write('<style media="print">@page {size: portrait;}</style>')
-  // 写入内容
+  // Write content
   iframeDoc.write('<div>' + printContent + '</div>')
   setTimeout(function() {
     iframe.contentWindow?.print()

@@ -143,7 +143,7 @@
           </el-select>
         </div>
       </div>
-      <!-- 关联线文字 -->
+      <!-- associated line text -->
       <div class="title noTop">{{ $t('baseStyle.associativeLineText') }}</div>
       <div class="row">
         <div class="rowItem">

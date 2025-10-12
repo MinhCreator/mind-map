@@ -6,27 +6,27 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    isHandleLocalFile: false, // 是否操作的是本地文件
+    isHandleLocalFile: false, // Whether the operation is a local file
     localConfig: {
-      // 本地配置
-      isZenMode: false, // 是否是禅模式
-      // 是否开启节点富文本
+      // local configuration
+      isZenMode: false, // Whether it is Zen mode
+      // Whether to enable node rich text
       openNodeRichText: true,
-      // 鼠标行为
+      // Mouse behavior
       useLeftKeySelectionRightKeyDrag: false,
-      // 是否显示滚动条
+      //Whether to display scroll bars
       isShowScrollbar: false,
-      // 是否是暗黑模式
+      // Is it dark mode?
       isDark: false,
-      // 是否开启AI功能
+      // Whether to enable AI function
       enableAi: true
     },
-    activeSidebar: '', // 当前显示的侧边栏
-    isOutlineEdit: false, // 是否是大纲编辑模式
-    isReadonly: false, // 是否只读
-    isSourceCodeEdit: false, // 是否是源码编辑模式
-    extraTextOnExport: '', // 导出时底部添加的文字
-    isDragOutlineTreeNode: false, // 当前是否正在拖拽大纲树的节点
+    activeSidebar: '', // Currently displayed sidebar
+    isOutlineEdit: false, // Whether it is outline editing mode
+    isReadonly: false, // Is it read-only?
+    isSourceCodeEdit: false, //Whether it is source code editing mode
+    extraTextOnExport: '', // Text added at the bottom when exporting
+    isDragOutlineTreeNode: false, // Whether the node of the outline tree is currently being dragged
     aiConfig: {
       api: 'http://ark.cn-beijing.volces.com/api/v3/chat/completions',
       key: '',
@@ -34,18 +34,18 @@ const store = new Vuex.Store({
       port: 3456,
       method: 'POST'
     },
-    // 扩展主题列表
+    // Extended topic list
     extendThemeGroupList: [],
-    // 内置背景图片
+    // Built-in background image
     bgList: []
   },
   mutations: {
-    // 设置操作本地文件标志位
+    // Set the local file operation flag
     setIsHandleLocalFile(state, data) {
       state.isHandleLocalFile = data
     },
 
-    // 设置本地配置
+    // Set local configuration
     setLocalConfig(state, data) {
       const aiConfigKeys = Object.keys(state.aiConfig)
       Object.keys(data).forEach(key => {
@@ -61,42 +61,42 @@ const store = new Vuex.Store({
       })
     },
 
-    // 设置当前显示的侧边栏
+    // Set the currently displayed sidebar
     setActiveSidebar(state, data) {
       state.activeSidebar = data
     },
 
-    // 设置大纲编辑模式
+    // Set outline editing mode
     setIsOutlineEdit(state, data) {
       state.isOutlineEdit = data
     },
 
-    // 设置是否只读
+    //Set whether read-only
     setIsReadonly(state, data) {
       state.isReadonly = data
     },
 
-    // 设置源码编辑模式
+    // Set source code editing mode
     setIsSourceCodeEdit(state, data) {
       state.isSourceCodeEdit = data
     },
 
-    // 设置导出时底部添加的文字
+    // Set the text added at the bottom when exporting
     setExtraTextOnExport(state, data) {
       state.extraTextOnExport = data
     },
 
-    // 设置树节点拖拽
+    // Set up tree node dragging
     setIsDragOutlineTreeNode(state, data) {
       state.isDragOutlineTreeNode = data
     },
 
-    // 扩展主题列表
+    // Extended topic list
     setExtendThemeGroupList(state, data) {
       state.extendThemeGroupList = data
     },
 
-    // 设置背景图片列表
+    // Set background image list
     setBgList(state, data) {
       state.bgList = data
     }

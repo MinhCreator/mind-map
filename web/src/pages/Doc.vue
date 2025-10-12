@@ -1,6 +1,6 @@
 T<template>
   <div class="doc">
-    文档已迁移至：<a href="https://wanglin2.github.io/mind-map-docs/">新地址</a>
+    Documentation has been moved to:<a href="https://MinhCreator.github.io/mind-map-docs/">Documentation</a>
   </div>
 </template>
 

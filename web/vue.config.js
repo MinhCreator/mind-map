@@ -12,11 +12,11 @@ module.exports = {
   filenameHashing: false,
   transpileDependencies: ['yjs', 'lib0', 'quill'],
   chainWebpack: config => {
-    // 移除 preload 插件
+    // Remove the preload plugin
     config.plugins.delete('preload')
-    // 移除 prefetch 插件
+    // Remove the prefetch plugin
     config.plugins.delete('prefetch')
-    // 支持运行时设置public path
+    // Support setting public path at runtime
     if (!isDev) {
       config
         .plugin('dynamicPublicPathPlugin')
@@ -24,7 +24,7 @@ module.exports = {
           { externalPublicPath: 'window.externalPublicPath' }
         ])
     }
-    // 给插入html页面内的js和css添加hash参数
+    // Add hash parameters to js and css inserted into html page
     if (!isLibrary) {
       config.plugin('html').tap(args => {
         args[0].hash = true
