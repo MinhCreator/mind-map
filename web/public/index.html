@@ -8,11 +8,11 @@
       content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0"
     />
     <link rel="icon" href="dist/logo.ico" />
-    <title>思绪思维导图</title>
+    <title>Thought Mind Map</title>
     <script>
-      // 自定义静态资源的路径
+      // Customize the path to static resources
       window.externalPublicPath = './dist/'
-      // 接管应用
+      // Take over application
       window.takeOverApp = false
     </script>
     <script
@@ -50,7 +50,7 @@
               mindMapData: {
                 root: {
                   data: {
-                    text: '根节点'
+                    text: 'root node'
                   },
                   children: []
                 },
@@ -71,51 +71,51 @@
       }
       const setTakeOverAppMethods = data => {
         window.takeOverAppMethods = {}
-        // 获取思维导图数据的函数
+        // Function to get mind map data
         window.takeOverAppMethods.getMindMapData = () => {
           return data.mindMapData
         }
-        // 保存思维导图数据的函数
+        // Function to save mind map data
         window.takeOverAppMethods.saveMindMapData = data => {
           console.log(data)
         }
-        // 获取思维导图配置，也就是实例化时会传入的选项
+        // Get the mind map configuration, which is the option passed in when instantiating
         window.takeOverAppMethods.getMindMapConfig = () => {
           return data.mindMapConfig
         }
-        // 保存思维导图配置
+        // Save mind map configuration
         window.takeOverAppMethods.saveMindMapConfig = config => {
           console.log(config)
         }
-        // 获取语言的函数
+        // Function to get language
         window.takeOverAppMethods.getLanguage = () => {
           return data.lang
         }
-        // 保存语言的函数
+        // Function to save language
         window.takeOverAppMethods.saveLanguage = lang => {
           console.log(lang)
         }
-        // 获取本地配置的函数
+        // Function to get local configuration
         window.takeOverAppMethods.getLocalConfig = () => {
           return data.localConfig
         }
-        // 保存本地配置的函数
+        // Function to save local configuration
         window.takeOverAppMethods.saveLocalConfig = config => {
           console.log(config)
         }
       }
       window.onload = async () => {
         if (!window.takeOverApp) return
-        // 请求数据
+        //Request data
         const data = await getDataFromBackend()
-        // 设置全局的方法
+        // Set global method
         setTakeOverAppMethods(data)
-        // 思维导图实例创建完成事件
+        // Mind map instance creation completion event
         window.$bus.$on('app_inited', mindMap => {
           console.log(mindMap)
         })
-        // 可以通过window.$bus.$on()来监听应用的一些事件
-        // 实例化页面
+        // You can use window.$bus.$on() to monitor some application events
+        // Instantiate the page
         window.initApp()
       }
     </script>
